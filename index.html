@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayPal</title>
+    <link rel="shortcut icon" sizes="196x196" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<nav class="navbar">
+    <div class="navbar-content">
+        <div class="nav-left">
+            <img src="./logo.png"
+                alt="PayPal" height="25">
+            <div>
+                <span>Home</span>
+            </div>
+            <span>
+                <a href="send.html" style="text-decoration: none;color: #142c8e;">Send and Request</a>
+            </span>
+            <span>Wallet</span>
+            <span>Activity</span>
+            <span>Help</span>
+        </div>
+        <div class="nav-right">
+            <div style="position: relative;">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </div>
+            <i class="fas fa-cog"></i>
+            <span>LOG OUT</span>
+        </div>
+    </div>
+</nav>
+
+<div class="main-container">
+    <div class="left-content">
+
+        <div class="balance-card">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h4>PayPal balance</h4>
+                <i class="fas fa-ellipsis-v"></i>
+            </div>
+            <div class="balance-amount">
+                € <input type="text" class="editable-amount" value="999.99" autocomplete="off">
+            </div>
+            <p style="color: #666; margin-bottom: 2rem;">Available</p>
+            <div style="display: flex; justify-content: space-between; align-items: center;margin-bottom: 1rem;">
+                <p>EUR</p>
+                <p id="currency-symbol-eur" style="color: #666;"></p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;margin-bottom: 2rem;">
+                <p>USD</p>
+                <p id="currency-symbol-usd" style="color: #666;"></p>
+            </div>
+
+            <p style="color: #666; margin-bottom: 1rem;font-size: 14px;max-width: 300px;">*This amount is an estimate based on the most recent exchange rate.</p>
+            <button class="transfer-btn">Add</button>
+
+            <p style="font-weight: bold;margin-top: 1rem;color: #142c8e;">Setting up automatic transfers</p>
+        </div>
+
+
+
+        <div class="activity-container">
+            <h4 style="margin: 0 0 1.5rem 0;">Quick Links</h4>
+
+            <div class="quick-actions">
+                <div class="quick-action-item">
+                    <div class="background-icon">
+                        <i class="fas fa-tasks-alt fa-2x" style="color: #142c8e;"></i>
+                    </div>
+                    <span>Professional tools</span>
+                </div>
+                <div class="quick-action-item">
+                    
+                    <div class="background-icon">
+                        <i class="fas fa-comment-dollar fa-2x" style="color: #142c8e;"></i>
+                    </div>
+                    <span>Ask for money</span>
+                </div>
+                <div class="quick-action-item">
+                    <div class="background-icon">
+                        <i class="fas fa-paper-plane fa-2x" style="color: #142c8e;"></i>
+                    </div>
+                    <span>Send</span>
+                </div>
+                <div class="quick-action-item">
+                    <div class="background-icon">
+                        <i class="fas fa-qrcode fa-2x" style="color: #142c8e;"></i>
+                    </div>
+                    <span>QR code</span>
+                </div>
+                <div class="quick-action-item">
+                    <div class="background-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#003087" viewBox="0 0 24 24" width="2rem" height="2rem"
+                            data-ppui="true">
+                            <path fill-rule="evenodd"
+                                d="M5 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3zm2 9.25a.75.75 0 0 1 .75-.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1-.75-.75zm.75 2.25a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5zM12 18.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 0 1.5h-3.5a.75.75 0 0 1-.75-.75zM13 4a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-3z"
+                                clip-rule="evenodd" data-ppui="true"></path>
+                        </svg>
+                    </div>
+                    <span>Billing</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="recommendations-container">
+            <div class="recommendations-left">
+                <img src="./gift.png" alt="">
+            </div>
+            <div class="recommendations-right">
+                <h4 style="margin-bottom: 1rem;">24hr-72hr</h4>
+                <p>The amount of time you need to wait</p>
+            </div>
+        </div>
+
+        <div class="activity-container">
+            <h4 style="margin: 0 0 1.5rem 0;">Actions</h4>
+            <div class="action-item">
+                <button class="action-btn" style="margin-left: 2rem;" onclick="window.location.href='send.html'">Send</button>
+                <div class="edit-actions">
+                    <div class="edit-circle">
+                        <p>+</p>
+                    </div>
+                    <p>Edit actions</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-content">
+        <div class="action-buttons">
+            <button class="action-btn">Send</button>
+            <button class="action-btn">Request</button>
+        </div>
+
+        <!-- <div class="quick-actions">
+            <div class="quick-action-item">
+                <div class="background-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="#003087" viewBox="0 0 24 24" width="2rem"
+                        height="2rem" data-ppui="true">
+                        <path
+                            d="M15.748 18.875a.75.75 0 0 1-.75-.75V16.5h-1.625a.75.75 0 1 1 0-1.5h1.625v-1.625a.75.75 0 1 1 1.5 0V15h1.625a.75.75 0 0 1 0 1.5h-1.625v1.625a.75.75 0 0 1-.75.75z"
+                            data-ppui="true"></path>
+                        <path fill-rule="evenodd"
+                            d="M4 6.903a1.5 1.5 0 0 1 .793-1.324l6.265-3.343a2 2 0 0 1 1.883 0l6.265 3.343c.488.261.794.77.794 1.324v2.1a1 1 0 0 1-1 1h-.796a6.252 6.252 0 1 1-7.038 10H5a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1h1v-7H5a1 1 0 0 1-1-1v-2.1zm5.5 8.753a6.352 6.352 0 0 0 0 .193v1.154h-2v-7h2v5.653zm1.5.181v-.169a4.744 4.744 0 0 1 4.672-4.665h.154a4.717 4.717 0 0 1 2.174.566 4.757 4.757 0 0 1 2.5 4.184 4.75 4.75 0 0 1-9.5.084zm2-5.699a6.274 6.274 0 0 0-2 1.552v-1.687h2v.135zm.75-3.635a1.75 1.75 0 1 1-3.5 0 1.75 1.75 0 0 1 3.5 0z"
+                            clip-rule="evenodd" data-ppui="true"></path>
+                    </svg>
+                </div>
+                <span>Add card or bank</span>
+            </div>
+            <div class="quick-action-item">
+                <div class="background-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="#003087" viewBox="0 0 24 24" width="2rem"
+                        height="2rem" data-ppui="true">
+                        <path
+                            d="M14.29 11.709a1 1 0 0 1 0-1.414L16.587 8H5a1 1 0 1 1 0-2h11.586L14.29 3.705a1 1 0 0 1 1.414-1.414L19.7 6.286a1.01 1.01 0 0 1 0 1.428l-3.995 3.995a1 1 0 0 1-1.414 0zm-4.585 10a1 1 0 0 0 0-1.414L7.41 18h11.586a1 1 0 1 0 0-2H7.41l2.295-2.295a1 1 0 1 0-1.414-1.414l-3.995 3.995a1.01 1.01 0 0 0 0 1.428l3.995 3.995a1 1 0 0 0 1.414 0z"
+                            data-ppui="true"></path>
+                    </svg>
+                </div>
+                <span>Transfer to China</span>
+            </div>
+            <div class="quick-action-item">
+                <div class="background-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="#003087" viewBox="0 0 24 24" width="2rem"
+                        height="2rem" data-ppui="true">
+                        <path fill-rule="evenodd"
+                            d="M5 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3zm2 9.25a.75.75 0 0 1 .75-.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1-.75-.75zm.75 2.25a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5zM12 18.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 0 1.5h-3.5a.75.75 0 0 1-.75-.75zM13 4a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-3z"
+                            clip-rule="evenodd" data-ppui="true"></path>
+                    </svg>
+                </div>
+                <span>Create an invoice</span>
+            </div>
+            <div class="quick-action-item">
+                <div class="background-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="#003087" viewBox="0 0 24 24" width="2rem"
+                        height="2rem" data-ppui="true">
+                        <path
+                            d="M14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm0-7a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm0 14a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"
+                            data-ppui="true"></path>
+                    </svg>
+                </div>
+                <span>More</span>
+            </div>
+        </div> -->
+
+        <div style="margin-bottom: 6rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h3>Send Again</h3>
+                <i class="fas fa-ellipsis-v"></i>
+            </div>
+            <div style="text-align: left; padding: 0.5rem;">
+                <!-- <i class="fas fa-search fa-3x" style="color: #142c8e;"></i> -->
+                <div class="background-icon bgcColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 24 24" width="3rem" height="3rem"
+                        data-ppui="true">
+                        <path fill-rule="evenodd"
+                            d="M15.052 16.46a7.5 7.5 0 1 1 1.413-1.415l3.243 3.243a1 1 0 1 1-1.414 1.414l-3.242-3.241zM16 10.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                            clip-rule="evenodd" data-ppui="true"></path>
+                    </svg>
+                </div>
+                <p style="margin-top: 1rem;">search</p>
+            </div>
+        </div>
+
+        <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h3>Banks and cards</h3>
+                <i class="fas fa-ellipsis-v"></i>
+            </div>
+            <div class="bank-account">
+                <i class="fas fa-university"></i>
+                <div style="margin-left: 10px;">
+                    <p>BANCO INDUSTRIAL E COMERCIAL D...</p>
+                    <p style="color: #666;margin-top: 10px;font-size: 14px;">Verified •••• 69</p>
+                </div>
+            </div>
+            <a href="#" style="color: #0070e0; text-decoration: none;font-weight: bold;">Link a Card or Bank</a>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-content">
+        <!-- PayPal Logo and Copyright -->
+        <div class="footer-logo">
+            <img src="https://www.paypalobjects.com/digitalassets/c/website/logo/full-text/pp_fc_hl.svg" alt="PayPal">
+
+            <!-- Footer Links -->
+            <div class="footer-links">
+                <a href="#">Help</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Security</a>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <div>©1999-2025 PayPal, Inc. All rights reserved.</div>
+            <p><span>Privacy</span> | <span>Cookies</span> | <span>Legal</span></p>
+        </div>
+
+        <!-- Footer Legal Info -->
+        <div class="footer-right">
+            <p>PayPal Pte. Ltd. is licensed by the Monetary Authority of Singapore as a Major Payment Institution
+                under the Payment Services Act 2019.</p>
+
+        </div>
+    </div>
+</footer>
+
+
+<!-- <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <button class="close-btn">&times;</button>
+        <div class="modal-content">
+            <div class="success-icon">
+                <div class="okstyle">ok</div>
+            </div>
+            <h2 class="modal-title">Transfer Successful!</h2>
+            <p class="modal-text" id="modalText">Process 24H: the amount $0 for user</p>
+        </div>
+    </div>
+</div> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<!-- <script src="index.js"></script> -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const totalInput = document.querySelector('.editable-amount');
+        let currentBalance = totalInput.value;
+        const currencySymbolEur = document.getElementById('currency-symbol-eur');
+        const currencySymbolUsd = document.getElementById('currency-symbol-usd');
+
+        // Retrieve balance value from localStorage on page load if available.
+        const storedBalance = localStorage.getItem('currentBalance');
+        if (storedBalance !== null) {
+            totalInput.value = storedBalance;
+            currentBalance = storedBalance;
+            currencySymbolEur.textContent = currentBalance;
+            let usd = currentBalance.replace(/[^\d.]/g, '') * 1.05;
+            currencySymbolUsd.textContent = 'US$' + usd.toFixed(2);
+        } else {
+            localStorage.setItem('currentBalance', totalInput.value);
+        }
+
+        function formatCurrency(value) {
+            // Remove non-numeric and non-period characters.
+            const number = value.replace(/[^\d.]/g, '');
+            const parts = number.split('.');
+
+            // Format integer part with comma separators.
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+            // Handle decimal part.
+            if (parts.length === 1) {
+                return parts[0] + '.00';
+            } else if (parts[1].length === 0) {
+                return parts.join('.') + '00';
+            } else if (parts[1].length === 1) {
+                return parts[0] + '.' + parts[1] + '0';
+            } else {
+                return parts.join('.');
+            }
+        }
+
+        totalInput.addEventListener('blur', function () {
+            this.value = formatCurrency(this.value);
+            currentBalance = this.value;
+            currencySymbolEur.textContent = currentBalance + '€';
+            let usd = currentBalance.replace(/[^\d.]/g, '') * 1.05;
+            currencySymbolUsd.textContent = 'US$' + usd.toFixed(2);
+            localStorage.setItem('currentBalance', currentBalance);
+        });
+
+        totalInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                this.value = formatCurrency(this.value);
+                currentBalance = this.value;
+                currencySymbolEur.textContent = currentBalance + '€';
+                let usd = currentBalance.replace(/[^\d.]/g, '') * 1.05;
+                currencySymbolUsd.textContent = 'US$' + usd.toFixed(2);
+                localStorage.setItem('currentBalance', currentBalance);
+                this.blur();
+            }
+        });
+
+
+    });
+</script>
+</body>
+
+</html>

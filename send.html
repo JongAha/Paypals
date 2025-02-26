@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayPal</title>
+    <link rel="shortcut icon" sizes="196x196" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<nav class="navbar">
+    <div class="navbar-content">
+        <div class="nav-left">
+            <img src="./logo.png" alt="PayPal" height="25">
+            <span>
+                <a href="index.html" style="text-decoration: none;color: #142c8e;">Home</a>
+            </span>
+            <div>
+                <span>Send and Request</span>
+            </div>
+            <span>Wallet</span>
+            <span>Activity</span>
+            <span>Help</span>
+        </div>
+        <div class="nav-right">
+            <div style="position: relative;">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </div>
+            <i class="fas fa-cog"></i>
+            <span>LOG OUT</span>
+        </div>
+    </div>
+</nav>
+
+<div class="smallBar">
+    <div style="max-width: 1100px;margin: 0 auto;display: flex;">
+        <p style="font-weight: bold;margin-right: 3rem;">Send</p>
+        <p style="margin-right: 3rem;">Ask</p>
+        <p style="margin-right: 3rem;">Contact</p>
+        <p style="margin-right: 3rem;">Plus</p>
+    </div>
+</div>
+
+<div class="main-container">
+    <div class="left-content">
+        <div class="transaction-item">
+            <h2 style="margin: 0 0 1.5rem 0;">Send</h2>
+            <div id="userInputContainer">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Name, @username, email, or mobile"
+                        id="userInput" list="emailSuggestions" autocomplete="off"
+                        style="position: relative; z-index: 10;">
+                    <datalist id="emailSuggestions">
+                        <!-- Options will be injected dynamically -->
+                    </datalist>
+                </div>
+                <div class="amount-container">
+                    <button class="recharge-button" id="rechargeButton">Next</button>
+                </div>
+
+                <div style="margin: 40px 0 0 0;">
+                    <p style="margin: 0 0 1.5rem 0;font-size: 24px;">More ways to send</p>
+
+                    <div class="bank-account">
+                        <i class="fas fa-file-invoice" style="color: #003087;font-size: 2rem;"></i>
+                        <div style="margin-left: 10px;">
+                            <p>Send a bill</p>
+                            <p style="color: #666;margin-top: 10px;font-size: 14px;">Customize, track and send bills.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bank-account">
+                        <i class="fas fa-users" style="color: #003087;font-size: 1.1rem;"></i>
+                        <div style="margin-left: 10px;">
+                            <p>Make a group payment</p>
+                            <p style="color: #666;margin-top: 10px;font-size: 14px;">Pay up to 5,000 people at a time,
+                                with no monthly fees.</p>
+                        </div>
+                    </div>
+                    <div class="bank-account">
+                        <i class="fas fa-gift" style="color: #003087;font-size: 1.5rem;"></i>
+                        <div style="margin-left: 10px;">
+                            <p>Send and receive gifts</p>
+                            <p style="color: #666;margin-top: 10px;font-size: 14px;">Find help or support others now.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="amountInputContainer" id="amountInputContainer">
+                <div class="userinfo">
+                    <!-- <img src="./head.png"> -->
+                     <p style="font-size: 26px;margin: 0;">Send to</p>
+                    <p id="currentUser" style="font-size: 18px;margin: 0;">username</p>
+
+                    <input type="text" class="amount-input" value="0.00" id="amountInput" autocomplete="off">
+                    <p style="font-size: 18px;font-weight: bold;margin: 0;">EUR</p>
+                </div>
+                <div class="userinfo">
+                    <div class="top-input">
+                        <input type="text" class="change-input-right" value="MONEY GUN" id="topLInput" autocomplete="off">
+                        <span>====</span>
+                        <input type="text" class="change-input-left" value="444,444.00" id="topRInput" autocomplete="off">
+                    </div>
+                    <div class="bottom-input">
+                        <input type="text" class="change-input-right" value="GA LA XY" id="bottomLInput" autocomplete="off">
+                        <span>====</span>
+                        <input type="text" class="change-input-left" value="1,110,000.00" id="bottomRInput" autocomplete="off">
+                    </div>
+                    <p style="font-size: 14px;margin: 3rem 0 0 0;">To find out more,<a href="#" style="text-decoration: none;color: #142c8e;">see our Terms of use</a></p>
+                </div>
+
+                <button class="recharge-button" id="continueButton">Send</button>
+                <button style="background: #ffffff;border: none;margin-top: 20px;font-size: 18px;color: #777777;"
+                    id="cancelButton">Cancel</button>
+            </div>
+
+
+            <div id="loadingContainer">
+                <div class="loading" id="loadingIndicator">
+                    <div class="loading-spinner"></div>
+                    <!-- <p style="margin-top: 10px;">Progress...</p> -->
+                </div>
+            </div>
+
+
+            <div class="modal" id="modalOverlay">
+                <!-- <button class="close-btn">&times;</button> -->
+                <div class="modal-content">
+                    <div class="success-icon">
+                        <img src="./success.png" alt="">
+                        <!-- <div class="okstyle">ok</div> -->
+                        <!-- <div class="checkmark"></div> -->
+                    </div>
+                    <p class="modal-text" id="modalText">You've just sent €0.00 to user</p>
+                    <button class="sendButton" id="sendButton">Send more</button>
+                    <button
+                        style="background: #ffffff;border: none;margin-top: 20px;font-size: 18px;color: #777777;cursor: pointer;"
+                        id="goToButton">Home</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-content">
+
+        <h2 style="margin: 0 0 1.5rem 0;">More ways to send</h2>
+
+
+        <div>
+            <div class="bank-account">
+                <i class="fas fa-university"></i>
+                <div style="margin-left: 10px;">
+                    <p>Send an invoice</p>
+                    <p style="color: #666;margin-top: 10px;font-size: 14px;">Customize,track,and send invoices.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-content">
+        <!-- PayPal Logo and Copyright -->
+        <div class="footer-logo">
+            <img src="https://www.paypalobjects.com/digitalassets/c/website/logo/full-text/pp_fc_hl.svg" alt="PayPal">
+
+            <!-- Footer Links -->
+            <div class="footer-links">
+                <a href="#">Help</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Security</a>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <div>©1999-2025 PayPal, Inc. All rights reserved.</div>
+            <p><span>Privacy</span> | <span>Cookies</span> | <span>Legal</span></p>
+        </div>
+
+        <!-- Footer Legal Info -->
+        <div class="footer-right">
+            <p>PayPal Pte. Ltd. is licensed by the Monetary Authority of Singapore as a Major Payment Institution
+                under the Payment Services Act 2019.</p>
+
+        </div>
+    </div>
+</footer>
+
+
+<!-- <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <button class="close-btn">&times;</button>
+        <div class="modal-content">
+            <div class="success-icon">
+                <div class="okstyle">ok</div>
+            </div>
+            <h2 class="modal-title">Transfer Successful!</h2>
+            <p class="modal-text" id="modalText">Process 24H: the amount $0 for user</p>
+        </div>
+    </div>
+</div> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<script src="send.js"></script>
+</body>
+
+</html>
