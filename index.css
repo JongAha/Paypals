@@ -287,6 +287,23 @@ body {
     outline: none;
 }
 
+.currency-symbol {
+    font-size: 2.5rem;
+    font-weight: 700;
+    width: 40px;
+    outline: none;
+    border: none;
+}
+
+.currency-symbol-content {
+    font-size: 18px;
+    font-weight: bold;
+    width: 80px;
+    outline: none;
+    border: none;
+    text-align: center;
+}
+
 .bank-account {
     display: flex;
     align-items: center;
@@ -593,7 +610,7 @@ body {
 
 .modal-text {
     color: #666;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .show {

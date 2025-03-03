@@ -45,7 +45,8 @@
                 <i class="fas fa-ellipsis-v"></i>
             </div>
             <div class="balance-amount">
-                € <input type="text" class="editable-amount" value="999.99" autocomplete="off">
+                <input type="text" class="currency-symbol" value="€">
+                <input type="text" class="editable-amount" value="999.99" autocomplete="off">
             </div>
             <p style="color: #666; margin-bottom: 2rem;">Available</p>
             <div style="display: flex; justify-content: space-between; align-items: center;margin-bottom: 1rem;">
@@ -272,12 +273,14 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const totalInput = document.querySelector('.editable-amount');
+        const currencySymbol = document.querySelector('.currency-symbol');
         let currentBalance = totalInput.value;
         const currencySymbolEur = document.getElementById('currency-symbol-eur');
         const currencySymbolUsd = document.getElementById('currency-symbol-usd');
 
         // Retrieve balance value from localStorage on page load if available.
         const storedBalance = localStorage.getItem('currentBalance');
+        const storedCurrencySymbol = localStorage.getItem('currencySymbol');
         if (storedBalance !== null) {
             totalInput.value = storedBalance;
             currentBalance = storedBalance;
@@ -286,6 +289,10 @@
             currencySymbolUsd.textContent = 'US$' + usd.toFixed(2);
         } else {
             localStorage.setItem('currentBalance', totalInput.value);
+        }
+
+        if (storedCurrencySymbol !== null) {
+            currencySymbol.value = storedCurrencySymbol;
         }
 
         function formatCurrency(value) {
@@ -325,6 +332,15 @@
                 let usd = currentBalance.replace(/[^\d.]/g, '') * 1.05;
                 currencySymbolUsd.textContent = 'US$' + usd.toFixed(2);
                 localStorage.setItem('currentBalance', currentBalance);
+                this.blur();
+            }
+        });
+
+        currencySymbol.addEventListener('blur', function () {
+            localStorage.setItem('currencySymbol', this.value);
+        });
+        currencySymbol.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
                 this.blur();
             }
         });

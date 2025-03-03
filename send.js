@@ -59,6 +59,7 @@ const rechargeButton = document.getElementById('rechargeButton');
 const continueButton = document.getElementById('continueButton');
 const loadingIndicator = document.getElementById('loadingIndicator');
 
+
 // userinput
 userInput.addEventListener("input", function () {
     const inputValue = this.value.toLowerCase();
@@ -149,8 +150,10 @@ continueButton.addEventListener('click', async () => {
 
     //动态改变modal-text中的内容为userInput和amountInput的值
     const modalText = document.getElementById('modalText');
+    const currencySymbol = localStorage.getItem('currencySymbol');
+    const currencySymbolContent = localStorage.getItem('currencySymbolContent');
 
-    modalText.innerText = `You have sent ${amountInput.value}€ EUR to ${userInput.value}.`;
+    modalText.innerText = `You have sent ${currencySymbol}${amountInput.value} ${currencySymbolContent} to ${userInput.value}.`;
 
     modalOverlay.classList.add('show'); // Show the modal
 
@@ -231,10 +234,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const topRInput = document.getElementById('topRInput');
     const bottomLInput = document.getElementById('bottomLInput');
     const bottomRInput = document.getElementById('bottomRInput');
+    const currencySymbolContent = document.getElementById('currencySymbolContent');
 
     // 加载本地存储的数据
     function loadFromLocalStorage() {
-        [topLInput, topRInput, bottomLInput, bottomRInput].forEach(input => {
+        [topLInput, topRInput, bottomLInput, bottomRInput, currencySymbolContent].forEach(input => {
             const savedValue = localStorage.getItem(input.id);
             if (savedValue) input.value = savedValue;
 
@@ -267,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // 为所有输入框绑定input事件
-    [topLInput, topRInput, bottomLInput, bottomRInput].forEach(input => {
+    [topLInput, topRInput, bottomLInput, bottomRInput, currencySymbolContent].forEach(input => {
         input.addEventListener('input', handleInput);
     });
 });
