@@ -45,8 +45,11 @@
                 <i class="fas fa-ellipsis-v"></i>
             </div>
             <div class="balance-amount">
-                <input type="text" class="currency-symbol" value="€">
+                
                 <input type="text" class="editable-amount" value="999.99" autocomplete="off">
+                <input type="text" class="currency-symbol" value="€">
+                <!-- 用于测量文本宽度的隐藏元素 -->
+                <span class="measure-text"></span>
             </div>
             <p style="color: #666; margin-bottom: 2rem;">Available</p>
             <div style="display: flex; justify-content: space-between; align-items: center;margin-bottom: 1rem;">
@@ -83,12 +86,15 @@
                     </div>
                     <span>Ask for money</span>
                 </div>
-                <div class="quick-action-item">
-                    <div class="background-icon">
-                        <i class="fas fa-paper-plane fa-2x" style="color: #142c8e;"></i>
+                <a href="send.html" style="text-decoration: none;color: #000000;">
+                    <div class="quick-action-item">
+                        <div class="background-icon">
+                            <i class="fas fa-paper-plane fa-2x" style="color: #142c8e;"></i>
+                        </div>
+                        <span>Send</span>
                     </div>
-                    <span>Send</span>
-                </div>
+                </a>
+                
                 <div class="quick-action-item">
                     <div class="background-icon">
                         <i class="fas fa-qrcode fa-2x" style="color: #142c8e;"></i>
@@ -274,13 +280,18 @@
     document.addEventListener('DOMContentLoaded', function () {
         const totalInput = document.querySelector('.editable-amount');
         const currencySymbol = document.querySelector('.currency-symbol');
+        const measure = document.querySelector('.measure-text');
         let currentBalance = totalInput.value;
         const currencySymbolEur = document.getElementById('currency-symbol-eur');
         const currencySymbolUsd = document.getElementById('currency-symbol-usd');
-
         // Retrieve balance value from localStorage on page load if available.
         const storedBalance = localStorage.getItem('currentBalance');
         const storedCurrencySymbol = localStorage.getItem('currencySymbol');
+
+        // 同步字体样式
+        const styles = window.getComputedStyle(totalInput);
+        measure.style.font = styles.font;
+
         if (storedBalance !== null) {
             totalInput.value = storedBalance;
             currentBalance = storedBalance;
@@ -315,6 +326,16 @@
             }
         }
 
+        function adjustWidth() {
+            measure.textContent = totalInput.value || totalInput.placeholder;
+            totalInput.style.width = measure.offsetWidth + 4 + 'px'; // 4px 为 padding 补偿
+        }
+
+        // 初始调整
+        adjustWidth();
+        // 输入时调整
+        totalInput.addEventListener('input', adjustWidth);
+
         totalInput.addEventListener('blur', function () {
             this.value = formatCurrency(this.value);
             currentBalance = this.value;
@@ -322,6 +343,7 @@
             let usd = currentBalance.replace(/[^\d.]/g, '') * 1.05;
             currencySymbolUsd.textContent = 'US$' + usd.toFixed(2);
             localStorage.setItem('currentBalance', currentBalance);
+            adjustWidth();
         });
 
         totalInput.addEventListener('keypress', function (e) {

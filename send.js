@@ -75,36 +75,56 @@ userInput.addEventListener("input", function () {
     });
 });
 // Handle amount input
+let inputDigits = ''; // 累计所有用户输入的数字字符
+
 amountInput.addEventListener('focus', function () {
-    if (this.value === '0.00') {
-        this.value = '';
-    }
-});
-
-
-amountInput.addEventListener('blur', function () {
-    if (this.value === '') {
+    if (inputDigits === '') {
         this.value = '0.00';
     } else {
-        this.value = formatCurrency(this.value);
+        this.value = formatFromDigits(inputDigits);
     }
 });
 
+amountInput.addEventListener('blur', function () {
+    if (inputDigits === '') {
+        this.value = '0.00';
+    } else {
+        this.value = formatFromDigits(inputDigits);
+    }
+});
+
+// 监听按键输入（不允许小数点，只记录数字）
 amountInput.addEventListener('input', function (e) {
-    let cursorPos = this.selectionStart;
-    let value = this.value.replace(/[^\d.]/g, '');
-    let originalLength = this.value.length;
-
-    if (value) {
-        this.value = value;
+    // 过滤输入为纯数字
+    const newChar = e.data;
+    if (!newChar || !/^\d$/.test(newChar)) {
+        this.value = formatFromDigits(inputDigits);
+        return;
     }
 
-    if (cursorPos <= 1) {
-        cursorPos = 1;
-    }
+    // 累加数字
+    inputDigits += newChar;
 
-    this.setSelectionRange(cursorPos, cursorPos);
+    // 格式化显示
+    this.value = formatFromDigits(inputDigits);
 });
+
+// 将纯数字字符串转换成格式化货币字符串
+function formatFromDigits(digits) {
+    if (!digits) return '0.00';
+
+    // 保证至少3位（前补0），方便切割最后两位为“假小数”
+    digits = digits.padStart(3, '0');
+
+    const integer = digits.slice(0, -2);
+    const decimal = digits.slice(-2);
+
+    // 加千分位
+    const withCommas = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+    return `${withCommas}.${decimal}`;
+}
+
 
 rechargeButton.addEventListener('click', async () => {
 
@@ -153,7 +173,7 @@ continueButton.addEventListener('click', async () => {
     const currencySymbol = localStorage.getItem('currencySymbol');
     const currencySymbolContent = localStorage.getItem('currencySymbolContent');
 
-    modalText.innerText = `You have sent ${currencySymbol}${amountInput.value} ${currencySymbolContent} to ${userInput.value}.`;
+    modalText.innerText = `You have sent ${amountInput.value} ${currencySymbol}${currencySymbolContent} to ${userInput.value}.`;
 
     modalOverlay.classList.add('show'); // Show the modal
 
@@ -196,10 +216,12 @@ sendButton.addEventListener('click', () => {
     modalOverlay.classList.remove('show');
     userInputContainer = document.getElementById('userInputContainer');
     userInputContainer.style.display = 'block';
+    inputDigits=''
 });
 
 goToButton.addEventListener('click', () => {
     window.location.href = 'index.html';
+    inputDigits=''
 })
 // Close modal when clicking the close button
 // closeBtn.addEventListener('click', () => {

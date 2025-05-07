@@ -186,6 +186,9 @@ body {
     font-size: 2.5rem;
     font-weight: 700;
     margin: 1rem 0;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
 }
 
 .transfer-btn {
@@ -281,9 +284,12 @@ body {
 
 .editable-amount {
     border: none;
-    font-size: 2.5rem;
-    font-weight: 700;
-    width: 400px;
+    min-width: 20px;
+    /* 最小宽度 */
+    padding-right: 2px;
+    /* 为光标留出空间 */
+    font: inherit;
+    /* 确保字体样式一致 */
     outline: none;
 }
 
@@ -293,6 +299,17 @@ body {
     width: 40px;
     outline: none;
     border: none;
+    padding-left: 2px;
+    font: inherit;
+}
+
+.measure-text {
+    position: absolute;
+    visibility: hidden;
+    white-space: pre;
+    /* 保留空白 */
+    font: inherit;
+    /* 保持字体一致 */
 }
 
 .currency-symbol-content {
@@ -610,7 +627,7 @@ body {
 
 .modal-text {
     color: #666;
-    font-size: 18px;
+    font-size: 36px;
 }
 
 .show {
