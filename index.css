@@ -16,7 +16,8 @@ body {
 }
 
 .navbar-content,
-.main-container {
+.main-container,
+.main-container-send {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
@@ -55,7 +56,14 @@ body {
 
 .main-container {
     display: grid;
-    /* grid-template-columns: 2fr 1fr; */
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    padding-top: 2rem;
+    min-height: 80vh;
+}
+
+.main-container-send{
+    display: grid;
     gap: 2rem;
     padding-top: 2rem;
     min-height: 80vh;
