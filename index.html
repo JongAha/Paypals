@@ -337,7 +337,9 @@
         totalInput.addEventListener('input', adjustWidth);
 
         totalInput.addEventListener('blur', function () {
-            this.value = formatCurrency(this.value);
+            this.value = this.value.replace(/,/g, '');
+            let numValue = parseFloat(this.value).toFixed(2);
+            this.value = formatCurrency(numValue);
             currentBalance = this.value;
             currencySymbolEur.textContent = currentBalance + '€';
             let usd = currentBalance.replace(/[^\d.]/g, '') * 1.05;

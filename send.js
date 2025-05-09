@@ -93,10 +93,11 @@ amountInput.addEventListener('blur', function () {
     }
 });
 
-// 监听按键输入（不允许小数点，只记录数字）
+// 监听按键输入（仅记录数字）
 amountInput.addEventListener('input', function (e) {
-    // 过滤输入为纯数字
     const newChar = e.data;
+
+    // 忽略非数字
     if (!newChar || !/^\d$/.test(newChar)) {
         this.value = formatFromDigits(inputDigits);
         return;
@@ -107,6 +108,15 @@ amountInput.addEventListener('input', function (e) {
 
     // 格式化显示
     this.value = formatFromDigits(inputDigits);
+});
+
+// 监听退格键（删除最后一位）
+amountInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Backspace') {
+        inputDigits = inputDigits.slice(0, -1);
+        e.preventDefault(); // 阻止原始删除行为
+        this.value = formatFromDigits(inputDigits);
+    }
 });
 
 // 将纯数字字符串转换成格式化货币字符串
